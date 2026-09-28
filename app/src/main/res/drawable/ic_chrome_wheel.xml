@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="38dp" android:height="38dp"
+    android:viewportWidth="64" android:viewportHeight="64">
+    <!-- Dark tire, polished chrome rim, spokes, hub, and reflected glints. -->
+    <path android:fillColor="#111923" android:strokeColor="#526579" android:strokeWidth="2"
+        android:pathData="M32,4 A28,28 0,1 1,32,60 A28,28 0,1 1,32,4"/>
+    <path android:pathData="M32,9 A23,23 0,1 1,32,55 A23,23 0,1 1,32,9">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="12" android:startY="10" android:endX="49" android:endY="55">
+                <item android:offset="0" android:color="#FFFFFF"/>
+                <item android:offset="0.28" android:color="#9BAFC2"/>
+                <item android:offset="0.46" android:color="#F5FCFF"/>
+                <item android:offset="0.55" android:color="#657B91"/>
+                <item android:offset="0.78" android:color="#D9EBF5"/>
+                <item android:offset="1" android:color="#FFFFFF"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#243748" android:strokeColor="#F2FAFF" android:strokeWidth="1"
+        android:pathData="M32,15 A17,17 0,1 1,32,49 A17,17 0,1 1,32,15"/>
+    <path android:fillColor="#DDEAF4" android:strokeColor="#FFFFFF" android:strokeWidth="0.7"
+        android:pathData="M29,15 L35,15 L34,27 L30,27 Z M44,19 L48,24 L37,31 L34,28 Z M49,36 L47,42 L36,36 L37,32 Z M35,49 L29,49 L30,37 L34,37 Z M17,42 L15,36 L27,32 L28,36 Z M16,24 L20,19 L30,28 L27,31 Z"/>
+    <path android:fillColor="#839DB3" android:strokeColor="#FFFFFF" android:strokeWidth="1.5"
+        android:pathData="M32,24 A8,8 0,1 1,32,40 A8,8 0,1 1,32,24"/>
+    <path android:fillColor="#F3FAFF"
+        android:pathData="M32,28 A4,4 0,1 1,32,36 A4,4 0,1 1,32,28"/>
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M48,3 L50,11 L58,13 L50,15 L48,23 L46,15 L38,13 L46,11 Z M13,42 L14.5,47.5 L20,49 L14.5,50.5 L13,56 L11.5,50.5 L6,49 L11.5,47.5 Z"/>
+</vector>

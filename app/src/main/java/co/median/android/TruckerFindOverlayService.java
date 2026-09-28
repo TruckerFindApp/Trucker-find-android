@@ -60,7 +60,13 @@ public class TruckerFindOverlayService extends Service {
 
         addSearch("⛽", "Fuel"); addSearch("🍔", "Food"); addSearch("🅿", "Truck parking");
         addSearch("🔧", "Truck repair"); addSearch("🧺", "Laundry"); addSearch("🚿", "Truck wash");
-        addSearch("🏨", "Hotels"); addSearch("24/7", "24 hour truck stop"); addSearch("✨", "Truck chrome shop");
+        addSearch("🏨", "Hotels"); addSearch("24/7", "24 hour truck stop");
+
+        ImageButton chrome = new ImageButton(this); chrome.setImageResource(R.drawable.ic_chrome_wheel);
+        chrome.setBackgroundColor(0xFF10273A); chrome.setPadding(dp(5),dp(5),dp(5),dp(5));
+        chrome.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        chrome.setContentDescription("Chrome shop"); chrome.setOnClickListener(v -> mapsSearch("Truck chrome shop near me"));
+        menu.addView(chrome, new LinearLayout.LayoutParams(dp(48), dp(48)));
 
         ImageButton scale = new ImageButton(this); scale.setImageResource(R.drawable.ic_truck_scale);
         scale.setBackgroundColor(0xFF10273A); scale.setPadding(dp(7),dp(7),dp(7),dp(7));
@@ -70,7 +76,12 @@ public class TruckerFindOverlayService extends Service {
         TextView close = textButton("✕", 18); close.setContentDescription("Turn off quick access");
         close.setOnClickListener(v -> stopSelf()); menu.addView(close, new LinearLayout.LayoutParams(dp(48), dp(42)));
 
-        TextView bubble = textButton("TF", 18); bubble.setBackgroundColor(0xFF168FE8);
+        ImageButton bubble = new ImageButton(this);
+        bubble.setImageResource(R.mipmap.ic_sidebar_logo);
+        bubble.setBackgroundColor(Color.TRANSPARENT);
+        bubble.setPadding(0, 0, 0, 0);
+        bubble.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        bubble.setContentDescription("Trucker Find quick access");
         bubble.setOnTouchListener((v,e)->drag(e));
         root.addView(menu); root.addView(bubble, new LinearLayout.LayoutParams(dp(54),dp(54)));
 
