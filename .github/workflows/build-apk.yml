@@ -22,6 +22,12 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x gradlew
 
+      - name: Test voice commands
+        run: |
+          javac -d build/voice-tests app/src/main/java/co/median/android/TruckerFindVoiceCommands.java tests/TruckerFindVoiceCommandsTest.java
+          java -cp build/voice-tests co.median.android.TruckerFindVoiceCommandsTest
+          node --test tests/saved-voice.test.cjs
+
       - name: Build debug APK
         run: ./gradlew assembleNormalDebug --stacktrace
 

@@ -83,7 +83,21 @@ public class TruckerFindOverlayService extends Service {
         bubble.setScaleType(ImageView.ScaleType.FIT_CENTER);
         bubble.setContentDescription("Trucker Find quick access");
         bubble.setOnTouchListener((v,e)->drag(e));
-        root.addView(menu); root.addView(bubble, new LinearLayout.LayoutParams(dp(54),dp(54)));
+        LinearLayout controls = new LinearLayout(this);
+        controls.setOrientation(LinearLayout.VERTICAL);
+        controls.addView(bubble, new LinearLayout.LayoutParams(dp(54),dp(54)));
+        ImageButton voice = new ImageButton(this);
+        voice.setImageResource(android.R.drawable.ic_btn_speak_now);
+        voice.setContentDescription("Voice search");
+        voice.setBackgroundColor(0xFF10273A);
+        voice.setOnClickListener(v -> {
+            menu.setVisibility(View.GONE);
+            Intent intent = new Intent(this, TruckerFindVoiceActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+        });
+        controls.addView(voice, new LinearLayout.LayoutParams(dp(54), dp(48)));
+        root.addView(menu); root.addView(controls);
 
         int type = Build.VERSION.SDK_INT >= 26 ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY : WindowManager.LayoutParams.TYPE_PHONE;
         params = new WindowManager.LayoutParams(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT,

@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements Observer,
     private boolean isRoot;
     private boolean webviewIsHidden = false;
     private Handler handler = new Handler();
+    private final TruckerFindSavedVoice savedVoice = new TruckerFindSavedVoice(this);
     private float hideWebviewAlpha = 0.0f;
     private boolean isFirstHideWebview = false;
     private String activityId;
@@ -666,6 +667,7 @@ public class MainActivity extends AppCompatActivity implements Observer,
         application.setAppBackgrounded(false);
         application.mBridge.onActivityResume(this);
         if (this.mWebview != null) this.mWebview.onResume();
+        savedVoice.accept(getIntent());
 
         AppConfig appConfig = AppConfig.getInstance(this);
 
@@ -1115,6 +1117,11 @@ public class MainActivity extends AppCompatActivity implements Observer,
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        if (intent.hasExtra(TruckerFindSavedVoice.EXTRA_COMMAND)) {
+            setIntent(intent);
+            savedVoice.accept(intent);
+            return;
+        }
         getGNApplication().mBridge.onActivityNewIntent(this, intent);
         String url = getUrlFromIntent(intent);
         if (url != null && !url.isEmpty()) {

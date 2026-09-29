@@ -161,6 +161,10 @@
             android:name="com.facebook.sdk.ClientToken"
             android:value="${facebook_client_token}" />
 
+        <activity android:name=".TruckerFindVoiceActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar" />
+
         <service android:name=".DownloadService"/>
 
         <service
