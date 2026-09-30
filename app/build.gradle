@@ -77,7 +77,8 @@ android {
         minSdk = 26
         targetSdk = 36
         applicationId "co.median.android.dykejej"
-        versionCode 24
+        versionCode 25
+        versionName "1.0.1"
         vectorDrawables.useSupportLibrary = true
 
         manifestPlaceholders = [manifestApplicationId: "${applicationId}",
@@ -104,16 +105,22 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("../../release.keystore")
-            storePassword "password"
-            keyAlias "release"
-            keyPassword "password"
+            if (System.getenv("TRUCKER_UPLOAD_STORE_FILE")) {
+                storeFile file(System.getenv("TRUCKER_UPLOAD_STORE_FILE"))
+                storeType "PKCS12"
+                storePassword System.getenv("TRUCKER_UPLOAD_STORE_PASSWORD")
+                keyAlias "upload"
+                keyPassword System.getenv("TRUCKER_UPLOAD_KEY_PASSWORD")
+            }
         }
         upload {
-            storeFile file("../../upload.keystore")
-            storePassword "password"
+            if (System.getenv("TRUCKER_UPLOAD_STORE_FILE")) {
+            storeFile file(System.getenv("TRUCKER_UPLOAD_STORE_FILE"))
+            storeType "PKCS12"
+            storePassword System.getenv("TRUCKER_UPLOAD_STORE_PASSWORD")
             keyAlias "upload"
-            keyPassword "password"
+            keyPassword System.getenv("TRUCKER_UPLOAD_KEY_PASSWORD")
+            }
         }
     }
 
@@ -124,14 +131,14 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-project.txt'
-            debuggable project.getProperties().get("enableLogsInRelease").toBoolean()
+            debuggable false
             signingConfig signingConfigs.release
         }
         upload {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-project.txt'
             matchingFallbacks = ['release']
-            debuggable project.getProperties().get("enableLogsInRelease").toBoolean()
+            debuggable false
             signingConfig signingConfigs.upload
         }
         buildTypes.each {
