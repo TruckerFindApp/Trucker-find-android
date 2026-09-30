@@ -17,7 +17,7 @@
   <color name="swipe_nav_inactive">#666666</color>
   <color name="swipe_nav_active">#000000</color>
   <color name="pull_to_refresh_color">#1a100b</color>
-  <color name="splash_background">#ffffff</color>
+  <color name="splash_background">#07111c</color>
   <color name="progress_indicator">#808080</color>
   <color name="systemNavBarBackground">#ffffff</color>
 </resources>
